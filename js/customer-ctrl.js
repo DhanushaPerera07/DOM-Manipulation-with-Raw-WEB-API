@@ -1,3 +1,4 @@
+
 /*===============================================================================
  * Global Variables
  *===============================================================================*/
@@ -7,6 +8,16 @@ var customers = [];
 
 // customer table reference
 var tblCustomer = document.getElementById('tbl-customers');
+
+// form fields
+var customerId = document.getElementById('txt-id');
+var customerName = document.getElementById('txt-name');
+var customerAddress = document.getElementById('txt-address');
+
+// form buttons
+var btnSave = document.getElementById('btn-save');
+var btnClear = document.getElementById('btn-clear');
+
 
 /*===============================================================================
  * Init
@@ -22,7 +33,11 @@ function init() {
  * Event Handlers and Timers
  *===============================================================================*/
 
-// Todo: add all event listeners and handlers here
+/** Listener for the clear button
+ * */
+btnClear.addEventListener('click',function () {
+    clearFormFields();
+});
 
 /*===============================================================================
  * Functions
@@ -59,7 +74,7 @@ for (var i = 0; i < customers.length ; i++) {
 
 // remove table footer when no customers are found
 // console.log(tblCustomer.children[2]);
-tblCustomer.children[2];
+// tblCustomer.children[2];
 
 // if no of customers are 0 table should display the footer section
 if (customers.length != 0){
@@ -99,6 +114,32 @@ function isFoundCustomer(id) {
     return isFound;
 }
 
+function clearFormFields() {
+    customerId.innerText = '';
+    customerName.innerText = '';
+    customerAddress.innerText = '';
+    clearFieldsResultAlert();
+}
+
+
+
+
+
+/*===============================================================================
+ * Alerts / AlertBox(s)
+ *===============================================================================*/
+
+/** Form cleared successful alert
+ * */
+function clearFieldsResultAlert() {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Form is cleared',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
 
 
 
